@@ -11,3 +11,8 @@
 .notfound {
   text-align: center;
 }
+
+.comment-body {
+  font-size: 20px;
+  margin-left: 10px;
+}
