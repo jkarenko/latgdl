@@ -11,47 +11,62 @@
   <script src="app.js"></script>
 
 </head>
-<body ng-app="flapperNews" ng-controller="MainCtrl">
+
+<body ng-app="flapperNews">
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
-
-      <div class="page-header">
-        <h1>Flapper News</h1>
-      </div>
-
-      <div ng-repeat="post in posts | orderBy:'-upvotes'">
-        <span class="glyphicon glyphicon-thumbs-up"
-          ng-click="incrementUpvotes(post)"></span>
-        {{post.upvotes}}
-        <span id="post-link">
-          <a ng-show="post.link" href="{{post.link}}">
-            {{post.title}}
-          </a>
-          <span ng-hide="post.link">
-            {{post.title}}
-          </span>
-        </span>
-      </div>
-
-      <form id="add-post-form" ng-submit="addPost()">
-        <h3>Add a new post</h3>
-
-        <div class="form-group">
-          <input type="text"
-            class="form-control"
-            placeholder="Title"
-            ng-model="title"></input>
-        </div>
-        <div class="form-group">
-          <input type="text"
-          class="form-control"
-          placeholder="Link"
-          ng-model="link"></input>
-        </div>
-        <button type="submit" class="btn btn-primary">Post</button>
-      </form>
+      <ui-view></ui-view>
 
     </div>
   </div>
-</body>
-</html>
+
+
+
+
+  <script type="text/ng-template" id="/home.html">
+    <div class="page-header">
+      <h1>Flapper News</h1>
+    </div>
+
+    <div ng-repeat="post in posts | orderBy:'-upvotes'">
+      <span class="glyphicon glyphicon-thumbs-up"
+      ng-click="incrementUpvotes(post)"></span>
+      {{post.upvotes}}
+      <span id="post-link">
+        <a ng-show="post.link" href="{{post.link}}">
+          {{post.title}}
+        </a>
+        <span ng-hide="post.link">
+          {{post.title}}
+        </span>
+      </span>
+    </div>
+
+    <form id="add-post-form" ng-submit="addPost()">
+      <h3>Add a new post</h3>
+
+      <div class="form-group">
+        <input type="text"
+        class="form-control"
+        placeholder="Title"
+        ng-model="title"></input>
+      </div>
+      <div class="form-group">
+        <input type="text"
+        class="form-control"
+        placeholder="Link"
+        ng-model="link"></input>
+      </div>
+      <button type="submit" class="btn btn-primary">Post</button>
+    </form>
+  </script>
+
+  <script type="text/ng-template" id="/notfound.html">
+    <div class="notfound">
+      <h1>Oops!</h1>
+      <h2>You seemed to try to look for something we don't have.<br>Our deepest condolences.</h2>
+    </div>
+  </script>
+
+  </body>
+  </html>
