@@ -10,7 +10,7 @@ var users = require('./routes/users');
 
 var mongoose = require('mongoose');
 require('./models/Posts');
-require('/models/Comments');
+require('./models/Comments');
 
 mongoose.connect('mongodb://newsuser:poopity@ds063715.mlab.com:63715/news')
 
