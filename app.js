@@ -4,15 +4,16 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
-var routes = require('./routes/index');
 var users = require('./routes/users');
-
 var mongoose = require('mongoose');
+
 require('./models/Posts');
 require('./models/Comments');
 
-mongoose.connect('mongodb://newsuser:poopity@ds063715.mlab.com:63715/news')
+var routes = require('./routes/index');
+
+
+mongoose.connect('mongodb://newsuser:poopity@ds063715.mlab.com:63715/news');
 
 var app = express();
 
