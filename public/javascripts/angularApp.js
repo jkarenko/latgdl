@@ -58,17 +58,6 @@ app.controller('MainCtrl', [
   function($scope, posts) {
     $scope.posts = posts.posts;
 
-    for (var i = 0; i < 5; i++) {
-      $scope.posts.push({
-        title: 'post ' + i,
-        upvotes: i,
-        comments: [
-          {author: 'Bob', body: 'Cool post, bro!', upvotes: 2},
-          {author: 'Mr. Stevens', body: 'GOAT', upvotes: 3}
-        ]
-      });
-    }
-
     $scope.addPost = function() {
       if (!$scope.title || $scope.title === '') { return; }
 
@@ -76,10 +65,7 @@ app.controller('MainCtrl', [
         title: $scope.title,
         link: $scope.link,
         upvotes: 0,
-        comments: [
-          {author: 'Bob', body: 'Cool post, bro!', upvotes: 2},
-          {author: 'Mr. Stevens', body: 'GOAT', upvotes: 3}
-        ]
+        comments: []
       });
 
       $scope.title = '';
