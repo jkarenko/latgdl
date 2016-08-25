@@ -37,13 +37,16 @@ router.param('comment', function(req, res, next, id) {
 router.get('/posts/:post', function(req, res) {
   req.post.populate('comments', function(err, post) {
     if(err) { return next(err); }
-    
+
     res.json(post);
   });
 });
 
-router.get('/posts/:post/comments/:comment/upvote', function(req, res) {
-  res.json(req.comment);
+router.put('/posts/:post/comments/:comment/upvote', function(req, res, next) {
+  req.comment.upvote(function(err, comment) {
+    if(err) { return next(err); }
+    res.json(comment);
+  });
 });
 
 router.get('/posts', function(req, res, next) {
