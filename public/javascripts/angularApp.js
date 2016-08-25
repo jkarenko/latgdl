@@ -70,6 +70,10 @@ app.factory('posts', ['$http', function($http) {
     });
   };
 
+  o.addComment = function(id, comment) {
+    return $http.post('/posts/' + id + '/comments/', comment);
+  };
+
   return o;
 }]);
 
@@ -107,12 +111,13 @@ app.controller('PostsCtrl', [
 
     $scope.post = post;
 
-    $scope.addComment = function() {
-      if ($scope.body === '') { return; }
-      $scope.post.comments.push({
+    $scope.addComment = function(){
+      if($scope.body === '') { return; }
+      posts.addComment(post._id, {
         body: $scope.body,
         author: 'user',
-        upvotes: 0
+      }).success(function(comment) {
+        $scope.post.comments.push(comment);
       });
       $scope.body = '';
     };
