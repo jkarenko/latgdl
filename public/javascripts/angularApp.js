@@ -1,4 +1,4 @@
-var app = angular.module('flapperNews', ['ui.router']);
+var app = angular.module('News', ['ui.router']);
 
 app.config([
   '$stateProvider',
@@ -24,7 +24,12 @@ app.config([
     .state('posts', {
       url: '/posts/{id}',
       templateUrl: '/posts.html',
-      controller: 'PostsCtrl'
+      controller: 'PostsCtrl',
+      resolve: {
+        post: ['$stateParams', 'posts', function($stateParams, posts) {
+          return posts.get($stateParams.id);
+        }]
+      }
     });
 
 
@@ -39,6 +44,12 @@ app.factory('posts', ['$http', function($http) {
 
   var o = {
     posts: []
+  };
+
+  o.get = function(id) {
+    return $http.get('/posts/' + id).then(function(res) {
+      return res.data;
+    });
   };
 
   o.getAll = function() {
@@ -90,11 +101,11 @@ app.controller('MainCtrl', [
 
 app.controller('PostsCtrl', [
   '$scope',
-  '$stateParams',
   'posts',
-  function($scope, $stateParams, posts) {
+  'post',
+  function($scope, posts, post) {
 
-    $scope.post = posts.posts[$stateParams.id];
+    $scope.post = post;
 
     $scope.addComment = function() {
       if ($scope.body === '') { return; }

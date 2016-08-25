@@ -12,7 +12,7 @@
 
 </head>
 
-<body ng-app="flapperNews">
+<body ng-app="News">
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
       <ui-view></ui-view>
@@ -23,7 +23,6 @@
 
 
   <!-- home -->
-
   <script type="text/ng-template" id="/home.html">
     <div class="page-header">
       <h1>Flapper News</h1>
@@ -42,7 +41,7 @@
         </span>
       </span>
       <span>
-        <a href="#/posts/{{$index}}">Comments</a>
+        <a href="#/posts/{{post._id}}">Comments</a>
       </span>
     </div>
 
