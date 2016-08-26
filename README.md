@@ -1,4 +1,10 @@
 
+### Angular ja Node harjoitustyö
+
+Aihe: sovellus jossa käyttäjät voivat jakaa linkkejä ja kommentoida niitä.  
+Sovellus on rakennettu [MEAN](https://en.wikipedia.org/wiki/MEAN_(software_bundle)) stackin päälle.  
+
+Sovellusta voi testata [tästä](http://latgdl.herokuapp.com/#/home).  
 
 
 ### Tuntikirjanpito
